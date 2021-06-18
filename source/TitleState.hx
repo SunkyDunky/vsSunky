@@ -45,6 +45,7 @@ class TitleState extends MusicBeatState
 	var fnfSpr:FlxSprite;
 	var FNF_Logo:FlxSprite;
 	var FNF_EX:FlxSprite;
+	var menuBG:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -81,7 +82,6 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 
@@ -127,7 +127,12 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(142, -17);
+		menuBG = new FlxSprite(-40, -40).loadGraphic(Paths.image('menubg', 'sunky'));
+		menuBG.antialiasing = true;
+		add(menuBG);
+		menuBG.visible = false;
+
+		logoBl = new FlxSprite(42, -57);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
@@ -136,13 +141,6 @@ class TitleState extends MusicBeatState
 		logoBl.updateHitbox();
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
-
-		gfDance = new FlxSprite(FlxG.width * 0.35, FlxG.height * 1.2);
-		gfDance.frames = Paths.getSparrowAtlas('sunky_menu');
-		gfDance.animation.addByIndices('danceLeft', 'sunky_menu', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = true;
-		add(gfDance);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -359,15 +357,6 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		logoBl.animation.play('bump');
-		danceLeft = !danceLeft;
-
-		if (danceLeft)
-			gfDance.animation.play('danceRight');
-		else
-			gfDance.animation.play('danceLeft');
-
-		FlxG.log.add(curBeat);
 
 		switch (curBeat)
 		{
@@ -399,9 +388,9 @@ class TitleState extends MusicBeatState
 			
 			case 12:
 				deleteCoolText();
-				FlxTween.tween(FNF_Logo, {y: 120, x: 210}, 0.8, {ease: FlxEase.backOut});
+				FlxTween.tween(FNF_Logo, {y: 75, x: 180}, 0.8, {ease: FlxEase.backOut});
 			case 14:
-				FlxTween.tween(FNF_EX, {y: 48, x: 403}, 0.8, {ease: FlxEase.backOut});
+				FlxTween.tween(FNF_EX, {y:48, x: 403}, 0.8, {ease: FlxEase.backOut});
 
 			case 16:
 				skipIntro();
@@ -420,10 +409,10 @@ class TitleState extends MusicBeatState
 
 			FlxG.camera.flash(FlxColor.WHITE, 4, null, true);
 			FlxTween.tween(logoBl, {'scale.x': 0.45, 'scale.y': 0.45, x: -165, y: -125}, 1.3, {ease: FlxEase.expoInOut, startDelay: 1.3});
-			FlxTween.tween(gfDance, {y: 20}, 2.3, {ease: FlxEase.expoInOut, startDelay: 0.8});
 			remove(credGroup);
 			titleText.visible = true;
 			logoBl.visible = true;
+			menuBG.visible = true;
 			skippedIntro = true;
 		}
 	}

@@ -28,13 +28,7 @@ class MenuWeek extends MusicBeatState
 
 	var weekData:Array<Dynamic> = [
 		['Tutorial'],
-		['Bopeebo', 'Fresh', 'Dadbattle'],
-		['Spookeez', 'South', "Monster"],
-		['Pico', 'Philly', "Blammed"],
-		['Satin-Panties', "High", "Milf"],
-		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-		['Senpai', 'Roses', 'Thorns'],
-		['Ugh', 'Guns', 'Dimensions']
+		['Neon', 'Dimensions']
 	];
 	
 	var curWeekData:Array<Dynamic> = [];
@@ -45,23 +39,11 @@ class MenuWeek extends MusicBeatState
 
 	var weekCharacters:Array<String> = [
 		"gf",
-		"dad",
-		"spooky",
-		"pico",
-		"mom",
-		"parents-christmas",
-		"senpai",
 		"sunky"
 	];
 
 	var weekNames:Array<String> = [
 		"",
-		"Daddy Dearest",
-		"Spooky Month",
-		"PICO",
-		"MOMMY MUST MURDER",
-		"RED SNOW",
-		"hating simulator ft. moawling",
 		"Dimension Boi"
 	];
 

@@ -140,6 +140,9 @@ class PlayState extends MusicBeatState
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
+	var neonupperBoppers:FlxSprite;
+	var neonbottomBoppers:FlxSprite;
+
 	private var LightsOutBG:FlxSprite;
 	private var BlindingBG:FlxSprite;
 	private var freezeIndicator:FlxSprite;
@@ -713,10 +716,13 @@ class PlayState extends MusicBeatState
 			bg.scale.set(6, 6);
 			add(bg);
 		}
+
 		case 'neon':
 			{
+				curStage = "NeonCity";
+
 				var skybg:FlxSprite = new FlxSprite (-964.95, -883.15);
-				skybg.loadGraphic(Paths.image("Neon_City/SkyNEON"));
+				skybg.loadGraphic(Paths.image("Neon_City/SkyNEON", 'sunky'));
 				add(skybg);
 				skybg.active = false;
 				skybg.updateHitbox();
@@ -724,7 +730,7 @@ class PlayState extends MusicBeatState
 				skybg.scrollFactor.set(0.8, 0.8);
 
 				var skyneon:FlxSprite = new FlxSprite (-964.95, -883.15);
-				skyneon.loadGraphic(Paths.image("Neon_City/BGBuildings"));
+				skyneon.loadGraphic(Paths.image("Neon_City/BGBuildings", 'sunky'));
 				add(skyneon);
 				skyneon.active = false;
 				skyneon.updateHitbox();
@@ -732,154 +738,304 @@ class PlayState extends MusicBeatState
 				skyneon.scrollFactor.set(0.8, 0.8);
 
 				var neonlightsblue:FlxSprite = new FlxSprite (-764.95, -863.15);
-				neonlightsblue.loadGraphic(Paths.image("Neon_City/NeonBlue"));
+				neonlightsblue.loadGraphic(Paths.image("Neon_City/NeonBlue",'sunky'));
 				add(neonlightsblue);
 				neonlightsblue.active = false;
 				neonlightsblue.updateHitbox();
 				neonlightsblue.antialiasing = true;
 				neonlightsblue.scrollFactor.set(0.8, 0.8);
 
+				neonupperBoppers = new FlxSprite(410, -270);
+				neonupperBoppers.frames = Paths.getSparrowAtlas('Neon_City/NeonTop','sunky');
+				neonupperBoppers.animation.addByPrefix('bop', "Top0", 24, false);
+				neonupperBoppers.antialiasing = true;
+				neonupperBoppers.setGraphicSize(Std.int(neonupperBoppers.width * 1));
+				neonupperBoppers.updateHitbox();
+				add(neonupperBoppers);
+				if (_modifiers.BrightnessSwitch && _modifiers.Brightness <= -30)
+					neonupperBoppers.visible = false;
+
+				var buildingsmid:FlxSprite = new FlxSprite (-864.95, -663.15);
+				buildingsmid.loadGraphic(Paths.image("Neon_City/building_mid",'sunky'));
+				buildingsmid.active = false;
+				buildingsmid.updateHitbox();
+				buildingsmid.antialiasing = true;
+				add(buildingsmid);
+
 				var buildingsneon:FlxSprite = new FlxSprite (-864.95, -863.15);
-				buildingsneon.loadGraphic(Paths.image("Neon_City/BuildingsNeon"));
+				buildingsneon.loadGraphic(Paths.image("Neon_City/BuildingsNeon",'sunky'));
 				buildingsneon.active = false;
 				buildingsneon.updateHitbox();
 				buildingsneon.antialiasing = true;
 				add(buildingsneon);
 
 				defaultCamZoom = 0.55;
-				curStage = "NeonCity";
+				
 				var neonfloor:FlxSprite = new FlxSprite(-894.95, -883.15);
-				neonfloor.loadGraphic(Paths.image("Neon_City/BgFloor"));
+				neonfloor.loadGraphic(Paths.image("Neon_City/BgFloor",'sunky'));
 				add(neonfloor);
 				neonfloor.active = false;
 				neonfloor.updateHitbox();
 				neonfloor.antialiasing = true;
 
+				neonbottomBoppers = new FlxSprite(-180, -230);
+				neonbottomBoppers.frames = Paths.getSparrowAtlas('Neon_City/NeonCharNONEON','sunky');
+				neonbottomBoppers.animation.addByPrefix('bop', 'background Characters Neon0', 24, false);
+				neonbottomBoppers.antialiasing = true;
+				neonbottomBoppers.setGraphicSize(Std.int(neonbottomBoppers.width * 0.89));
+				neonbottomBoppers.updateHitbox();
+				add(neonbottomBoppers);
+				if (_modifiers.BrightnessSwitch && _modifiers.Brightness <= -45)
+					neonbottomBoppers.visible = false;
+
 			}
 
 		case 'dimensions':
 			{
-				defaultCamZoom = 0.8;
+				defaultCamZoom = 0.7;
+
 				curStage = 'SunkyWORLD';
-				var bg:FlxSprite = new FlxSprite(-764.95, -843.15);
-				bg.loadGraphic(Paths.image("SpaceWorld/space_world"));
+				
+				var bg:FlxSprite = new FlxSprite(-64.95, -443.15);
+				bg.loadGraphic(Paths.image("SpaceWorld/space_world",'sunky'));
 				add(bg);
 				bg.active = false;
 				bg.updateHitbox();
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.8, 0.8);
+				bg.setGraphicSize(Std.int(bg.width * 2));
 
 				var floatingislandFront:FlxSprite = new FlxSprite (300, -343);
-				floatingislandFront.loadGraphic(Paths.image('SpaceWorld/BG_1'));
+				floatingislandFront.loadGraphic(Paths.image('SpaceWorld/BG_1','sunky'));
 				add(floatingislandFront);
 				floatingislandFront.active = false;
 				floatingislandFront.updateHitbox();
 				floatingislandFront.antialiasing = true;
 				floatingislandFront.scrollFactor.set(0.8, 0.8);
+				floatingislandFront.setGraphicSize(Std.int(floatingislandFront.width * 2));
 
-				FlxTween.tween(floatingislandFront, {x: 300, y: -313, alpha: 0.1 }, 2,  {
-					ease: FlxEase.smootherStepInOut,
-					type: FlxTweenType.PINGPONG,
-					startDelay:2,
-					loopDelay:0.3,
-				});
-
-				var bgsquare:FlxSprite = new FlxSprite(-864.95, -843.15);
-				bgsquare.loadGraphic(Paths.image("SpaceWorld/square"));
+				var bgsquare:FlxSprite = new FlxSprite(64.95, -43.15);
+				bgsquare.loadGraphic(Paths.image("SpaceWorld/square",'sunky'));
 				add(bgsquare);
 				bgsquare.active = false;
 				bgsquare.updateHitbox();
 				bgsquare.antialiasing = true;
 				bgsquare.scrollFactor.set(0.8, 0.8);
+				bgsquare.setGraphicSize(Std.int(bgsquare.width * 2));
 
-				FlxTween.tween(bgsquare, {x: -964.95, y: -643.15 }, 2,  {
+				FlxTween.tween(bgsquare, {x: -64.95, y: -343.15 }, 2,  {
 					ease: FlxEase.smootherStepInOut,
 					type: FlxTweenType.PINGPONG,
-					startDelay: 0.1,
-					loopDelay:0.5,
+					loopDelay:1,
 				});
-				var bgX:FlxSprite = new FlxSprite(-664.95, -843.15);
-				bgX.loadGraphic(Paths.image("SpaceWorld/X"));
+
+
+				var bgX:FlxSprite = new FlxSprite(-164.95, -343.15);
+				bgX.loadGraphic(Paths.image("SpaceWorld/X",'sunky'));
 				add(bgX);
 				bgX.active = false;
 				bgX.updateHitbox();
 				bgX.antialiasing = true;
 				bgX.scrollFactor.set(0.8, 0.8);
-
-				FlxTween.tween(bgX, {x: -664.95, y: -643.15 }, 2,  {
+				bgX.setGraphicSize(Std.int(bgX.width * 2));
+			
+				FlxTween.tween(bgX, {x: -464.95, y: -243.15 }, 2,  {
 					ease: FlxEase.smootherStepInOut,
 					type: FlxTweenType.PINGPONG,
-					startDelay: 1,
-					loopDelay:3,
+					loopDelay:1.2,
 				});
-				
 
-				var bgcircle:FlxSprite = new FlxSprite(-564.95, -843.15);
-				bgcircle.loadGraphic(Paths.image("SpaceWorld/circle"));
+				var bgcircle:FlxSprite = new FlxSprite(-164.95, -143.15);
+				bgcircle.loadGraphic(Paths.image("SpaceWorld/circle",'sunky'));
 				add(bgcircle);
 				bgcircle.active = false;
 				bgcircle.updateHitbox();
 				bgcircle.antialiasing = true;
 				bgcircle.scrollFactor.set(0.8, 0.8);
+				bgcircle.setGraphicSize(Std.int(bgcircle.width * 2));
 
-				FlxTween.tween(bgcircle, {x: -564.95, y: -643.15 }, 2,  {
+				FlxTween.tween(bgcircle, {x: -264.95, y: -3.15 }, 2,  {
 					ease: FlxEase.smootherStepInOut,
 					type: FlxTweenType.PINGPONG,
-					startDelay: 0.1,
-					loopDelay:1.5,
+					loopDelay:2.5,
 				});
 
-				var bgtriangle:FlxSprite = new FlxSprite(-464.95, -843.15);
-				bgtriangle.loadGraphic(Paths.image("SpaceWorld/triangle"));
+				var bgtriangle:FlxSprite = new FlxSprite(-264.95, -843.15);
+				bgtriangle.loadGraphic(Paths.image("SpaceWorld/triangle",'sunky'));
 				add(bgtriangle);
 				bgtriangle.active = false;
 				bgtriangle.updateHitbox();
 				bgtriangle.antialiasing = true;
 				bgtriangle.scrollFactor.set(0.8, 0.8);
+				bgtriangle.setGraphicSize(Std.int(bgtriangle.width * 2));
 
-				FlxTween.tween(bgtriangle, {x: -464.95, y: -643.15 }, 2,  {
+				FlxTween.tween(bgtriangle, {x: -164.95, y: -543.15 }, 2,  {
 					ease: FlxEase.smootherStepInOut,
 					type: FlxTweenType.PINGPONG,
-					startDelay: 0.5,
-					loopDelay:1,
+					loopDelay:2,
 				});
 
 
-				var floatingisland:FlxSprite = new FlxSprite (-464, -643);
-				floatingisland.loadGraphic(Paths.image('SpaceWorld/BG_3'));
+				var floatingisland:FlxSprite = new FlxSprite (-464, -43);
+				floatingisland.loadGraphic(Paths.image('SpaceWorld/BG_3','sunky'));
 				add(floatingisland);
 				floatingisland.active = false;
 				floatingisland.updateHitbox();
 				floatingisland.antialiasing = true;
 				floatingisland.scrollFactor.set(0.8, 0.8);
-
-				FlxTween.tween(floatingisland, {x: -464, y: -623 }, 2,  {
-					ease: FlxEase.smootherStepInOut,
-					type: FlxTweenType.PINGPONG,
-					loopDelay:0.3,
-				});
+				floatingisland.setGraphicSize(Std.int(floatingisland.width * 5));
 
 				var sign:FlxSprite = new FlxSprite(1100, 43.15);
-				sign.loadGraphic(Paths.image("SpaceWorld/SIGN"));
+				sign.loadGraphic(Paths.image("SpaceWorld/SIGN",'sunky'));
 				add(sign);
 				sign.active = false;
 				sign.updateHitbox();
 				sign.antialiasing = true;
 				sign.scrollFactor.set(0.8, 0.8);
-				sign.setGraphicSize(Std.int(sign.width * 0.5));
+				sign.setGraphicSize(Std.int(sign.width * 2));
 
 				FlxTween.tween(sign, {x: 1100, y: -33.15 }, 2,  {
 					ease: FlxEase.smootherStepInOut,
 					type: FlxTweenType.PINGPONG,
-					loopDelay:1,
+					loopDelay:0.1,
 				});
 				
-				var bgFloor:FlxSprite = new FlxSprite(-764.95, -13);
-				bgFloor.loadGraphic(Paths.image("SpaceWorld/bg_floor"));
+				var bgFloor:FlxSprite = new FlxSprite(101, -213);
+				bgFloor.loadGraphic(Paths.image("SpaceWorld/bg_floor",'sunky'));
 				add(bgFloor);
 				bgFloor.active = false;
 				bgFloor.updateHitbox();
 				bgFloor.antialiasing = true;
+				bgFloor.setGraphicSize(Std.int(bgFloor.width * 2.5));
+			}
+
+		case 'Hell':
+			{
+				defaultCamZoom = 0.5;
+				curStage = 'SunkyEVIL';
+				var bgRED:FlxSprite = new FlxSprite(-764.95, -843.15);
+				bgRED.loadGraphic(Paths.image("SpaceWorldRED/VoidSKY",'sunky'));
+				add(bgRED);
+				bgRED.active = false;
+				bgRED.updateHitbox();
+				bgRED.antialiasing = true;
+				bgRED.scrollFactor.set(0.8, 0.8);
+				bgRED.setGraphicSize(Std.int(bgRED.width * 1));
+				
+
+				var floatingislandFrontRED:FlxSprite = new FlxSprite (300, -343);
+				floatingislandFrontRED.loadGraphic(Paths.image('SpaceWorldRED/island1RED','sunky'));
+				add(floatingislandFrontRED);
+				floatingislandFrontRED.active = false;
+				floatingislandFrontRED.updateHitbox();
+				floatingislandFrontRED.antialiasing = true;
+				floatingislandFrontRED.scrollFactor.set(0.8, 0.8);
+	
+				FlxTween.tween(floatingislandFrontRED, {x: 300, y: -313, alpha: 0.1 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					startDelay:2,
+					loopDelay:0.3,
+				});
+	
+				var bgsquareRED:FlxSprite = new FlxSprite(-864.95, -843.15);
+				bgsquareRED.loadGraphic(Paths.image("SpaceWorldRED/SquareRED",'sunky'));
+				add(bgsquareRED);
+				bgsquareRED.active = false;
+				bgsquareRED.updateHitbox();
+				bgsquareRED.antialiasing = true;
+				bgsquareRED.scrollFactor.set(0.8, 0.8);
+	
+				FlxTween.tween(bgsquareRED, {x: -964.95, y: -643.15 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					startDelay: 0.1,
+					loopDelay:0.5,
+				});
+				var bgXRED:FlxSprite = new FlxSprite(-664.95, -843.15);
+				bgXRED.loadGraphic(Paths.image("SpaceWorldRED/exRED",'sunky'));
+				add(bgXRED);
+				bgXRED.active = false;
+				bgXRED.updateHitbox();
+				bgXRED.antialiasing = true;
+				bgXRED.scrollFactor.set(0.8, 0.8);
+	
+				FlxTween.tween(bgXRED, {x: -664.95, y: -643.15 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					startDelay: 1,
+					loopDelay:3,
+				});
+					
+	
+				var bgcircleRED:FlxSprite = new FlxSprite(-564.95, -843.15);
+				bgcircleRED.loadGraphic(Paths.image("SpaceWorldRED/circleRED",'sunky'));
+				add(bgcircleRED);
+				bgcircleRED.active = false;
+				bgcircleRED.updateHitbox();
+				bgcircleRED.antialiasing = true;
+				bgcircleRED.scrollFactor.set(0.8, 0.8);
+
+				FlxTween.tween(bgcircleRED, {x: -564.95, y: -643.15 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					startDelay: 0.1,
+					loopDelay:1.5,
+				});
+	
+				var bgtriangleRED:FlxSprite = new FlxSprite(-464.95, -843.15);
+				bgtriangleRED.loadGraphic(Paths.image("SpaceWorldRED/TriangleRED",'sunky'));
+				add(bgtriangleRED);
+				bgtriangleRED.active = false;
+				bgtriangleRED.updateHitbox();
+				bgtriangleRED.antialiasing = true;
+				bgtriangleRED.scrollFactor.set(0.8, 0.8);
+	
+				FlxTween.tween(bgtriangleRED, {x: -464.95, y: -643.15 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					startDelay: 0.5,
+					loopDelay:1,
+				});
+	
+	
+				var floatingislandRED:FlxSprite = new FlxSprite (-464, -643);
+				floatingislandRED.loadGraphic(Paths.image('SpaceWorldRED/island2RED','sunky'));
+				add(floatingislandRED);
+				floatingislandRED.active = false;
+				floatingislandRED.updateHitbox();
+				floatingislandRED.antialiasing = true;
+				floatingislandRED.scrollFactor.set(0.8, 0.8);
+	
+				FlxTween.tween(floatingislandRED, {x: -464, y: -623 }, 2,  {
+					ease: FlxEase.smootherStepInOut,
+					type: FlxTweenType.PINGPONG,
+					loopDelay:0.3,
+				});
+
+				var portalRED:FlxSprite = new FlxSprite (-864, -643);
+				portalRED.loadGraphic(Paths.image('SpaceWorldRED/SunkyPortalRED','sunky'));
+				add(portalRED);
+				portalRED.active = false;
+				portalRED.updateHitbox();
+				portalRED.antialiasing = true;
+				portalRED.scrollFactor.set(0.8, 0.8);
+				portalRED.setGraphicSize(Std.int(portalRED.width * 1));
+
+				FlxTween.tween(portalRED, {x: -864, y: -1053 }, 2,  {
+					ease: FlxEase.smoothStepInOut,
+					type: FlxTweenType.PINGPONG,
+					loopDelay:0.3,
+					
+				});
+
+				var bgFloorRED:FlxSprite = new FlxSprite(-1264.95, -1733);
+				bgFloorRED.loadGraphic(Paths.image("SpaceWorldRED/floorRED",'sunky'));
+				add(bgFloorRED);
+				bgFloorRED.active = false;
+				bgFloorRED.updateHitbox();
+				bgFloorRED.antialiasing = true;
+				bgFloorRED.setGraphicSize(Std.int(bgFloorRED.width * 2));
 			}
 		default:
 		{
@@ -3873,6 +4029,10 @@ private function keyShit():Void
 				upperBoppers.animation.play('bop', true);
 				bottomBoppers.animation.play('bop', true);
 				santa.animation.play('idle', true);
+			case 'neon':
+				neonupperBoppers.animation.play('bop', true);
+				neonbottomBoppers.animation.play('bop', true);
+
 
 			case 'limo':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)

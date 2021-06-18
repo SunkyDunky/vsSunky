@@ -1,4 +1,6 @@
 bf
+bfNEON
+bfRED
 dad
 gf
 spooky
@@ -18,4 +20,5 @@ senpai
 senpai-angry
 spirit
 sunky
+sunkyNEON
 sunky-sword

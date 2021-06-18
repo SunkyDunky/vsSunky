@@ -72,7 +72,11 @@ class TitleStateReturn extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(142, -17);
+		var menuBG:FlxSprite = new FlxSprite(-40, -40).loadGraphic(Paths.image('menubg', 'sunky'));
+		menuBG.antialiasing = true;
+		add(menuBG);
+
+		logoBl = new FlxSprite(42, -57);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
@@ -82,12 +86,6 @@ class TitleStateReturn extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		gfDance = new FlxSprite(FlxG.width * 0.35, FlxG.height * 1.2);
-		gfDance.frames = Paths.getSparrowAtlas('sunky_menu');
-		gfDance.animation.addByIndices('danceLeft', 'sunky_menu', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'sunky_menu', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = true;
-		add(gfDance);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -118,11 +116,9 @@ class TitleStateReturn extends MusicBeatState
 
 		FlxG.camera.flash(FlxColor.WHITE, 4);
 		FlxTween.tween(logoBl, {'scale.x': 0.45, 'scale.y': 0.45, x: -165, y: -125}, 1.3, {ease: FlxEase.expoInOut, startDelay: 1.3});
-		FlxTween.tween(gfDance, {y: 20}, 2.3, {ease: FlxEase.expoInOut, startDelay: 0.8});
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 
@@ -194,18 +190,5 @@ class TitleStateReturn extends MusicBeatState
 		super.update(elapsed);
 	}
 
-	override function beatHit()
-	{
-		super.beatHit();
 
-		logoBl.animation.play('bump');
-		danceLeft = !danceLeft;
-
-		if (danceLeft)
-			gfDance.animation.play('danceRight');
-		else
-			gfDance.animation.play('danceLeft');
-
-		FlxG.log.add(curBeat);
-	}
 }
