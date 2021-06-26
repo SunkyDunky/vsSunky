@@ -42,6 +42,7 @@ class HealthIcon extends FlxSprite
 		animation.add('sunky', [43, 44, 45], 0, false, isPlayer);
 		animation.add('sunkyNEON', [43, 44, 45], 0, false, isPlayer);
 		animation.add('sunky-sword', [43, 44, 45], 0, false, isPlayer);
+		animation.add('sunky-evil', [43, 44, 45], 0, false, isPlayer);
 		animation.play(char);
 		switch(char){
 			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'spirit' | 'gf-pixel':

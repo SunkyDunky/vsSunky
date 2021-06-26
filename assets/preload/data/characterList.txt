@@ -22,3 +22,4 @@ spirit
 sunky
 sunkyNEON
 sunky-sword
+sunky-evil

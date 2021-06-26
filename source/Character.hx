@@ -679,6 +679,24 @@ class Character extends FlxSprite
 		
 				playAnim('idle');
 
+				case 'sunky-evil':
+					frames = Paths.getSparrowAtlas('SpaceWorldRED/sunky_corrupted','sunky');
+					animation.addByPrefix('idle', 'SunkyEvil_Idle', 24, false);
+					animation.addByPrefix('singUP', 'SunkyEvil_UP', 24, false);
+					animation.addByPrefix('singDOWN', 'SunkyEvil_DOWN', 24, false);
+					animation.addByPrefix('singLEFT', 'SunkyEvil_LEFT', 24, false);
+					animation.addByPrefix('singRIGHT', 'SunkyEvil_RIGHT', 24, false);
+	
+			
+					addOffset("idle");
+					addOffset("singUP", 200, 544);
+					addOffset("singDOWN", 10, -90);
+					addOffset("singLEFT"), 530, 199;
+					addOffset("singRIGHT", -10, 50);
+	
+			
+					playAnim('idle');
+
 					
 		}
 
