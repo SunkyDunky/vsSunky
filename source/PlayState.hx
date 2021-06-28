@@ -3678,7 +3678,7 @@ private function keyShit():Void
 				upperBoppers.animation.play('bop', true);
 				bottomBoppers.animation.play('bop', true);
 				santa.animation.play('idle', true);
-			case 'neon':
+			case 'NeonCity':
 				neonupperBoppers.animation.play('bop', true);
 				neonbottomBoppers.animation.play('bop', true);
 
