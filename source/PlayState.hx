@@ -560,7 +560,7 @@ class PlayState extends MusicBeatState
 
 		case 'madness':
 			{
-				defaultCamZoom = 0.5;
+				defaultCamZoom = 0.6;
 				curStage = 'SunkyEVIL';
 				var bgRED:FlxSprite = new FlxSprite(-764.95, -843.15);
 				bgRED.loadGraphic(Paths.image("SpaceWorldRED/VoidSKY",'sunky'));
