@@ -63,6 +63,69 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+				case 'gfNEON':
+					// GIRLFRIEND CODE
+					tex = Paths.getSparrowAtlas('Neon_City/GF_NEON','sunky');
+					frames = tex;
+					animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+					animation.addByPrefix('singLEFT', 'GF left note', 24, false);
+					animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
+					animation.addByPrefix('singUP', 'GF Up Note', 24, false);
+					animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
+					animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+					animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+					animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+					animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
+					animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
+					animation.addByPrefix('scared', 'GF FEAR', 24);
+	
+					addOffset('cheer');
+					addOffset('sad', -2, -21);
+					addOffset('danceLeft', 0, -9);
+					addOffset('danceRight', 0, -9);
+	
+					addOffset("singUP", 0, 4);
+					addOffset("singRIGHT", 0, -20);
+					addOffset("singLEFT", 0, -19);
+					addOffset("singDOWN", 0, -20);
+					addOffset('hairBlow', 45, -8);
+					addOffset('hairFall', 0, -9);
+	
+					addOffset('scared', -2, -17);
+	
+					playAnim('danceRight');
+				case 'gfHD':
+					// GIRLFRIEND CODE
+					tex = Paths.getSparrowAtlas('SpaceWorld/GF_HD','sunky');
+					frames = tex;
+					animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+					animation.addByPrefix('singLEFT', 'GF left note', 24, false);
+					animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
+					animation.addByPrefix('singUP', 'GF Up Note', 24, false);
+					animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
+					animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+					animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+					animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+					animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
+					animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
+					animation.addByPrefix('scared', 'GF FEAR', 24);
+		
+					addOffset('cheer');
+					addOffset('sad', -2, -21);
+					addOffset('danceLeft', 0, -9);
+					addOffset('danceRight', 0, -9);
+	
+					addOffset("singUP", 0, 4);
+					addOffset("singRIGHT", 0, -20);
+					addOffset("singLEFT", 0, -19);
+					addOffset("singDOWN", 0, -20);
+					addOffset('hairBlow', 45, -8);
+					addOffset('hairFall', 0, -9);
+		
+					addOffset('scared', -2, -17);
+		
+					playAnim('danceRight');
+
 			case 'gf-christmas':
 				tex = Paths.getSparrowAtlas('characters/gfChristmas','shared');
 				frames = tex;
@@ -695,15 +758,15 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'SunkyRIGHT_REMAKE', 24, false);
 		
 					addOffset("idle");
-					addOffset("singUP", 1, -2);
-					addOffset("singDOWN", 170, -120);
+					addOffset("singUP", -9, 6);
+					addOffset("singDOWN", 170, -122);
 					addOffset("singLEFT",  63, -12);
-					addOffset("singRIGHT", 80);
+					addOffset("singRIGHT", 0, -30);
 		
 					playAnim('idle');
 
 			case 'sunky-sword':
-				frames = Paths.getSparrowAtlas('characters/Sunky-Sword');
+				frames = Paths.getSparrowAtlas('SpaceWorld/Sunky-Sword','sunky');
 				animation.addByPrefix('idle', 'IdleSword', 24, false);
 				animation.addByPrefix('singUP', 'SunkyUP2', 24, false);
 				animation.addByPrefix('singDOWN', 'SunkyDOWN2', 24, false);
@@ -805,7 +868,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel':
+				case 'gf' | 'gfNEON' | 'gfHD' | 'gf-christmas' | 'gf-car' | 'gf-pixel':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
