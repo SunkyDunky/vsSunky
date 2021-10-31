@@ -1,6 +1,5 @@
 package;
 
-#if windows
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 
@@ -12,7 +11,7 @@ class DiscordClient
 	{
 		trace("Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "822967001903005716",
+			clientID: "874302943711592479",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
@@ -86,4 +85,3 @@ class DiscordClient
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}
 }
-#end

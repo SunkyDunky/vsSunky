@@ -1,3 +1,5 @@
-Tutorial:gf:1
-Neon:sunky:7
-Dimensions:sunky-sword:7
+Tutorial:gf:1:#FF2BE6FF:#FF2BFFC5:#FF2BE6FF
+Neon:sunky:7:#F322D5:#4401FE:#4401FE
+Dimensions:sunky:7:#8016E9:#EB8C2D:#FCD382
+Ectospasm:sunky-evil:7:#E9008A:#FF000000:#E9008A
+You-Cant-Run:sunky-evil:7:#E9008A:#FF000000:#E9008A

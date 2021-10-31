@@ -4,8 +4,6 @@ bfHD
 bfRED
 dad
 gf
-gfNEON
-gfHD
 spooky
 monster
 pico
@@ -23,6 +21,8 @@ senpai
 senpai-angry
 spirit
 sunky
+sunkympeg
 sunkyNEON
 sunky-sword
 sunky-evil
+Voltz
